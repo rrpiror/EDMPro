@@ -1,0 +1,6 @@
+framework module Pods_EDMProUITests {
+  umbrella header "Pods-EDMProUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -1,0 +1,6 @@
+framework module Pods_EDMPro {
+  umbrella header "Pods-EDMPro-umbrella.h"
+
+  export *
+  module * { export * }
+}
