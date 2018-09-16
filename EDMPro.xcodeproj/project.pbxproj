@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -23,12 +23,13 @@
 		5961CDFB20DC40F80017E8F7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5961CDF920DC40F80017E8F7 /* LaunchScreen.storyboard */; };
 		5961CE0620DC40F80017E8F7 /* EDMProTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5961CE0520DC40F80017E8F7 /* EDMProTests.swift */; };
 		5961CE1120DC40F80017E8F7 /* EDMProUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5961CE1020DC40F80017E8F7 /* EDMProUITests.swift */; };
-		5961CE1F20DC41A20017E8F7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5961CE1E20DC41A20017E8F7 /* GoogleService-Info.plist */; };
 		5961CE2120DC4A780017E8F7 /* PurchaseOrdersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5961CE2020DC4A780017E8F7 /* PurchaseOrdersViewController.swift */; };
 		5961CE2320DC51840017E8F7 /* NewOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5961CE2220DC51840017E8F7 /* NewOrderViewController.swift */; };
 		5961CE2520DC54E50017E8F7 /* ShoppingList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5961CE2420DC54E50017E8F7 /* ShoppingList.swift */; };
 		5961CE2720DE338E0017E8F7 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5961CE2620DE338E0017E8F7 /* Constants.swift */; };
 		5961CE2920DE37A40017E8F7 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5961CE2820DE37A40017E8F7 /* Utilities.swift */; };
+		597C34D62141248500ACAFC0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 597C34D52141248500ACAFC0 /* GoogleService-Info.plist */; };
+		597C34DC214EABDF00ACAFC0 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 597C34DB214EABDF00ACAFC0 /* StoreKit.framework */; };
 		59CA318320EAC06700FFF0A0 /* SwipeTableViewHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CA318220EAC06600FFF0A0 /* SwipeTableViewHelpers.swift */; };
 		59D2A5B820E7822E00C2F1BB /* ShoppingItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D2A5B720E7822E00C2F1BB /* ShoppingItem.swift */; };
 		59D2A5BA20E8169100C2F1BB /* AddItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D2A5B920E8169100C2F1BB /* AddItemViewController.swift */; };
@@ -82,12 +83,13 @@
 		5961CE0C20DC40F80017E8F7 /* EDMProUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EDMProUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5961CE1020DC40F80017E8F7 /* EDMProUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EDMProUITests.swift; sourceTree = "<group>"; };
 		5961CE1220DC40F80017E8F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5961CE1E20DC41A20017E8F7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5961CE2020DC4A780017E8F7 /* PurchaseOrdersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseOrdersViewController.swift; sourceTree = "<group>"; };
 		5961CE2220DC51840017E8F7 /* NewOrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewOrderViewController.swift; sourceTree = "<group>"; };
 		5961CE2420DC54E50017E8F7 /* ShoppingList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingList.swift; sourceTree = "<group>"; };
 		5961CE2620DE338E0017E8F7 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		5961CE2820DE37A40017E8F7 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		597C34D52141248500ACAFC0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		597C34DB214EABDF00ACAFC0 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		59CA318220EAC06600FFF0A0 /* SwipeTableViewHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeTableViewHelpers.swift; sourceTree = "<group>"; };
 		59D2A5B720E7822E00C2F1BB /* ShoppingItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingItem.swift; sourceTree = "<group>"; };
 		59D2A5B920E8169100C2F1BB /* AddItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemViewController.swift; sourceTree = "<group>"; };
@@ -107,6 +109,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				21BE284B3DB94D63B1874D8B /* Pods_EDMPro.framework in Frameworks */,
+				597C34DC214EABDF00ACAFC0 /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -172,7 +175,7 @@
 				5961CDF720DC40F80017E8F7 /* Assets.xcassets */,
 				5961CDF920DC40F80017E8F7 /* LaunchScreen.storyboard */,
 				5961CDFC20DC40F80017E8F7 /* Info.plist */,
-				5961CE1E20DC41A20017E8F7 /* GoogleService-Info.plist */,
+				597C34D52141248500ACAFC0 /* GoogleService-Info.plist */,
 			);
 			path = EDMPro;
 			sourceTree = "<group>";
@@ -245,6 +248,7 @@
 		5D3937041B16FE9398628A8E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				597C34DB214EABDF00ACAFC0 /* StoreKit.framework */,
 				046AF352532F41BDC01429CF /* Pods_EDMPro.framework */,
 				E52A3A0EF0F75A44C3B28B7F /* Pods_EDMProTests.framework */,
 				18EAEFB2E0109B805A53937F /* Pods_EDMProUITests.framework */,
@@ -333,10 +337,15 @@
 			attributes = {
 				LastSwiftUpdateCheck = 1000;
 				LastUpgradeCheck = 1000;
-				ORGANIZATIONNAME = "Rob Prior";
+				ORGANIZATIONNAME = EDMPro;
 				TargetAttributes = {
 					5961CDEC20DC40F70017E8F7 = {
 						CreatedOnToolsVersion = 10.0;
+						SystemCapabilities = {
+							com.apple.InAppPurchase = {
+								enabled = 1;
+							};
+						};
 					};
 					5961CE0020DC40F80017E8F7 = {
 						CreatedOnToolsVersion = 10.0;
@@ -349,7 +358,7 @@
 				};
 			};
 			buildConfigurationList = 5961CDE820DC40F70017E8F7 /* Build configuration list for PBXProject "EDMPro" */;
-			compatibilityVersion = "Xcode 9.3";
+			compatibilityVersion = "Xcode 10.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -374,7 +383,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5961CDFB20DC40F80017E8F7 /* LaunchScreen.storyboard in Resources */,
-				5961CE1F20DC41A20017E8F7 /* GoogleService-Info.plist in Resources */,
+				597C34D62141248500ACAFC0 /* GoogleService-Info.plist in Resources */,
 				5961CDF820DC40F80017E8F7 /* Assets.xcassets in Resources */,
 				5961CDF620DC40F70017E8F7 /* Main.storyboard in Resources */,
 			);
@@ -681,19 +690,19 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = TL22XCB27L;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = C9QAW9BCJ5;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = EDMPro/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.edmpro.EDMPro;
+				PRODUCT_BUNDLE_IDENTIFIER = com.edmpro.EDM;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "e0c3c31f-a614-4843-afa9-235e971b113c";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = EDMProDev;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -704,19 +713,19 @@
 			baseConfigurationReference = 352207C3EE028EE27C983F9F /* Pods-EDMPro.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = TL22XCB27L;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = C9QAW9BCJ5;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = EDMPro/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.edmpro.EDMPro;
+				PRODUCT_BUNDLE_IDENTIFIER = com.edmpro.EDM;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = EDMPro;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -728,7 +737,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = TL22XCB27L;
 				INFOPLIST_FILE = EDMProTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -738,6 +747,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.edmpro.EDMProTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EDMPro.app/EDMPro";
@@ -750,7 +760,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = TL22XCB27L;
 				INFOPLIST_FILE = EDMProTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -760,6 +770,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.edmpro.EDMProTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EDMPro.app/EDMPro";
@@ -771,6 +782,7 @@
 			baseConfigurationReference = A8962638E4D2760FF1864304 /* Pods-EDMProUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TL22XCB27L;
 				INFOPLIST_FILE = EDMProUITests/Info.plist;
@@ -781,6 +793,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.edmpro.EDMProUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = EDMPro;
@@ -792,6 +805,7 @@
 			baseConfigurationReference = B0527235A20F776A44AF8EFA /* Pods-EDMProUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TL22XCB27L;
 				INFOPLIST_FILE = EDMProUITests/Info.plist;
@@ -802,6 +816,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.edmpro.EDMProUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = EDMPro;

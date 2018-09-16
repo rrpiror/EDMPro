@@ -29,26 +29,28 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func logInButtonPressed(_ sender: Any) {
         
-        if emailTextField.text != "" && passwordTextField.text != "" {
-            
+        if emailTextField.text == "" || passwordTextField.text == "" {
+            createAlert(title: "Unable to Log In", message: "Please ensure you fill in all the information")
+        } else {
             FUser.loginUserWith(email: emailTextField.text!, password: passwordTextField.text!, completion: { (error) in
                 if error != nil {
-                    createAlert(title: "Error Logging In", message: "")
-                    return
+                    createAlert(title: "Error logging in", message: "Please try again")
                 }
                 self.emailTextField.text = nil
                 self.passwordTextField.text = nil
                 self.view.endEditing(true)
-                
                 self.goToApp()
             })
         }
     }
-    
+        
+        
+        
     @IBAction func forgotPasswordPressed(_ sender: Any) {
         
         if emailTextField.text != "" {
             resetUserPassword(email: emailTextField.text!)
+            createAlert(title: "Reset Password Email Sent", message: "Please check your emails and follow the instructions")
         } else {
             
             createAlert(title: "Error", message: "Please enter an email in the email section above")
@@ -89,5 +91,6 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
     func dismissKeyboard() {
         self.view.endEditing(false)
     }
+    
     
 }

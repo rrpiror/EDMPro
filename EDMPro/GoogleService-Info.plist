@@ -7,9 +7,9 @@
 	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
 	<string>ca-app-pub-3940256099942544/4411468910</string>
 	<key>CLIENT_ID</key>
-	<string>389979983606-naodm9558k46u627bp52dg7qmkt9qmjl.apps.googleusercontent.com</string>
+	<string>389979983606-mdgldabkcoh6bqvi5c4m98omdc35rb3e.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.389979983606-naodm9558k46u627bp52dg7qmkt9qmjl</string>
+	<string>com.googleusercontent.apps.389979983606-mdgldabkcoh6bqvi5c4m98omdc35rb3e</string>
 	<key>API_KEY</key>
 	<string>AIzaSyCr8UkQRLNlWSQvGmgR-C0pJHOJGKWT0mk</string>
 	<key>GCM_SENDER_ID</key>
@@ -17,7 +17,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.edmpro.EDMPro</string>
+	<string>com.edmpro.EDM</string>
 	<key>PROJECT_ID</key>
 	<string>edmpro-d8040</string>
 	<key>STORAGE_BUCKET</key>
@@ -33,7 +33,7 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:389979983606:ios:e99e805457db3e4d</string>
+	<string>1:389979983606:ios:e2c7bfada40cf436</string>
 	<key>DATABASE_URL</key>
 	<string>https://edmpro-d8040.firebaseio.com</string>
 </dict>

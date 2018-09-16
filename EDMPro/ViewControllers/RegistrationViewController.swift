@@ -10,7 +10,6 @@ import UIKit
 
 class RegistrationViewController: UIViewController, UITextFieldDelegate {
     
-    @IBOutlet var companyLogoImageView: UIImageView!
     @IBOutlet var nameTextField: UITextField!
     @IBOutlet var companyNameTextField: UITextField!
     @IBOutlet var emailTextField: UITextField!
@@ -31,21 +30,17 @@ class RegistrationViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func signUpButtonPressed(_ sender: Any) {
         
-        if nameTextField.text != "" && companyNameTextField.text != "" && emailTextField.text != "" && passwordTextField.text != "" {
-            
+        if nameTextField.text == "" || companyNameTextField.text == "" || emailTextField.text == "" || passwordTextField.text == "" {
+            createError(title: "Unable to Register", message: "Please ensure you fill in all the information")
+            dismissKeyboard()
+        } else {
             FUser.registerUserWith(email: emailTextField.text!, password: passwordTextField.text!, firstName: nameTextField.text!, companyName: companyNameTextField.text!, completion: { (error) in
-                
                 if error != nil {
                     self.createError(title: "Error Could Not Register", message: "")
                     return
                 }
                 self.goToApp()
             })
-            
-            dismissKeyboard()
-            
-        } else {
-            createError(title: "Unable to Register", message: "Please ensure you fill in all the information")
             dismissKeyboard()
         }
         
@@ -56,8 +51,6 @@ class RegistrationViewController: UIViewController, UITextFieldDelegate {
         self.dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func addCompanyLogoButtonPressed(_ sender: Any) {
-    }
     
     //MARK: KEYBOARD DELEGATE
     

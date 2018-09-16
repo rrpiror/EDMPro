@@ -14,6 +14,7 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var supplierEmailTextField: UITextField!
     @IBOutlet var signOutButtonOutlet: UIButton!
     @IBOutlet var saveButtonOutlet: UIButton!
+    @IBOutlet var welcomeLabel: UILabel!
     
     override func viewDidAppear(_ animated: Bool) {
         loadSettings()
@@ -41,7 +42,7 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
         let yesAction = UIAlertAction(title: "Yes", style: .default) { (UIAlertAction) in
             FUser.logOutcurrentUser { (success) in
                 if success {
-                    
+                    self.dismiss(animated: false, completion: nil)
                     cleanUpFirebaseObservers()
                     let loginView = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LogInView")
                     self.present(loginView, animated: true, completion: nil)
@@ -78,6 +79,16 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
     }
     
     func loadSettings() {
+        
+        firebase.child(kUSER).child(FUser.currentId()).child(kFIRSTNAME).observe(.value, with: {
+            snapshot in
+            if snapshot.exists() {
+                self.welcomeLabel.text = "Hi, \(snapshot.value as? String ?? "Hey, welcome to EDM Pro")"
+            } else {
+                self.welcomeLabel.text = "Welcome back,"
+            }
+            
+        })
         
             firebase.child(kSUPPLIERNAME).child(FUser.currentId()).child("SupplierName").observe(.value, with: {
                 snapshot in

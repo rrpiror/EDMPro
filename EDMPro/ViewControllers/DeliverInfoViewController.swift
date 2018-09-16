@@ -74,7 +74,7 @@ class DeliverInfoViewController: UIViewController {
         if completion_handler != nil {
             
             let df = DateFormatter()
-            df.dateFormat = "yyyy-MM-dd"
+            df.dateFormat = "dd-MM-yyyy"
             
             completion_handler(address_editor.text, df.string(from: date_picker.date), info_editor.text)
         }

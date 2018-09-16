@@ -9,6 +9,8 @@
 import UIKit
 import SwipeCellKit
 import MessageUI
+import Firebase
+
 
 class NewOrderViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, SwipeTableViewCellDelegate, MyProductsViewControllerDelegate, MFMailComposeViewControllerDelegate {
     
@@ -22,16 +24,23 @@ class NewOrderViewController: UIViewController, UITableViewDataSource, UITableVi
     var shoppingItem: ShoppingItem!
     var shoppingItems: [ShoppingItem] = []
     var boughtItems: [ShoppingItem] = []
+    var firstName: String?
+    var compnayName: String?
+    var purchaseOrderRef: String?
     
     var defaultOptions = SwipeTableOptions()
     var isSwipeRightEnabled = true
     
     var totalPrice: Float!
+    var name: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         loadShoppingItems()
+        loadFirstName()
+        loadCompanyName()
+        
 
     }
     
@@ -166,17 +175,8 @@ class NewOrderViewController: UIViewController, UITableViewDataSource, UITableVi
         let yesAction = UIAlertAction(title: "Yes, send my order", style: .default) { (UIAlertAction) in
             
             self.sendMailHandler()
+            self.loadPurchaseOrderRef(shoppingList: self.shoppingList)
 
-            /*
-            let mailComposeViewController = self.configureMailController()
-            if MFMailComposeViewController.canSendMail() {
-                self.present(mailComposeViewController, animated: true, completion: nil)
-            } else {
-                self.showMailError()
-            }
-            
-            self.createError(title: "", message: "Order Sent")
-            */
         }
         let noAction = UIAlertAction(title: "No, not yet", style: .destructive) { (UIAlertAction) in
             
@@ -222,11 +222,13 @@ class NewOrderViewController: UIViewController, UITableViewDataSource, UITableVi
             self.navigationController?.popToViewController(self, animated: false)
             
             let mailComposeViewController = self.configureMailController()
+            mailComposeViewController.setSubject("DELIVERY: EDM Pro Order")
+            
             if MFMailComposeViewController.canSendMail() {
                 
                 var content = self.getDataForEmailBody()
                 
-                content = "\(content)Address: \(address)\nDate: \(date)\nAdditional Info: \(extra)"
+                content = "Hi,\nPlease see my EDM Pro Purchase order below.\n\nORDER REFERENCE: \(self.purchaseOrderRef ?? "ENTER YOUR ORDER REFERENCE HERE")\n\n\(content)Address: \(address)\nDate: \(date)\nAdditional Info: \(extra)\n\nThank you\n\(self.firstName ?? "ENTER YOUR NAME HERE")\n\(self.compnayName ?? "ENTER YOUR COMPANY NAME HERE")"
                 
                 mailComposeViewController.setMessageBody(content, isHTML: false)
                 
@@ -237,24 +239,24 @@ class NewOrderViewController: UIViewController, UITableViewDataSource, UITableVi
 
         }
     }
+
     
     func sendMailCollectionHandler() {
-        
+
         let mailComposeViewController = self.configureMailController()
+        mailComposeViewController.setSubject("COLLECTION: EDM Pro Order")
         if MFMailComposeViewController.canSendMail() {
-            mailComposeViewController.setMessageBody( self.getDataForEmailBody(), isHTML: false)
-            self.present(mailComposeViewController, animated: true, completion: nil)
+            mailComposeViewController.setMessageBody("Hi,\nPlease see my EDM Pro Purchase order below.\n\nORDER REFERENCE: \(purchaseOrderRef ?? "ENTER YOUR ORDER REFERENCE HERE")\n\n\(self.getDataForEmailBody())\nPlease have order ready for me to collect.\n\nThank You\n\(firstName ?? "ENTER YOUR NAME HERE")\n\(compnayName ?? "ENTER YOUR COMPANY NAME HERE")", isHTML: false)
+        self.present(mailComposeViewController, animated: true, completion: nil)
+
         } else {
             self.showMailError()
         }
-        
-        self.createError(title: "", message: "Order Sent")
     }
+    
     
     @IBAction func backBarButtonItemPressed(_ sender: Any) {
         self.performSegue(withIdentifier: "NewOrderToPurchaseOrdersViewController", sender: self)
-        
-        
     }
     
     
@@ -308,6 +310,40 @@ class NewOrderViewController: UIViewController, UITableViewDataSource, UITableVi
     
     //MARK: Helper Functions
     
+    func loadPurchaseOrderRef(shoppingList: ShoppingList) {
+        firebase.child(kSHOPPINGLIST).child(FUser.currentId()).child(shoppingList.id).child(kNAME).observe(.value, with: {
+            snapshot in
+            if snapshot.exists() {
+                self.purchaseOrderRef = snapshot.value as? String
+            } else {
+                print("NO SNAPSHOT VALUE: \(snapshot.value!)")
+            }
+        })
+    }
+    
+    func loadFirstName() {
+        
+        firebase.child(kUSER).child(FUser.currentId()).child(kFIRSTNAME).observe(.value, with: {
+            snapshot in
+            if snapshot.exists() {
+                self.firstName = snapshot.value as? String
+            } else {
+               self.firstName = "ENTER YOUR NAME HERE"
+            }
+        })
+    }
+    
+    func loadCompanyName() {
+        firebase.child(kUSER).child(FUser.currentId()).child(kCOMPANYNAME).observe(.value, with: {
+            snapshot in
+            if snapshot.exists() {
+                self.compnayName = snapshot.value as? String
+            } else {
+                self.compnayName = "ENTER YOUR COMPANY NAME HERE"
+            }
+        })
+    }
+    
     func showMailError() {
         let sendMailErrorAlert = UIAlertController(title: "Could not send email", message: "We were unable to send your email", preferredStyle: .alert)
         let dismiss = UIAlertAction(title: "Ok", style: .default, handler: nil)
@@ -326,13 +362,9 @@ class NewOrderViewController: UIViewController, UITableViewDataSource, UITableVi
     func calculateTotal() {
         self.totalPrice = 0
         
-        for item in boughtItems {
-            //self.totalPrice = self.totalPrice + item.price
-            self.totalPrice = self.totalPrice + (item.price * Float(item.quantity)!)
-        }
         for item in shoppingItems {
             //self.totalPrice = self.totalPrice + item.price
-            self.totalPrice = self.totalPrice + (item.price * Float(item.quantity)!)
+            self.totalPrice = self.totalPrice + (item.price * (Float(item.quantity))!)
         }
         
         self.totalPriceLabel.text = "Total Price: £\(String(format: "%.2f", self.totalPrice!))"
@@ -370,7 +402,7 @@ class NewOrderViewController: UIViewController, UITableViewDataSource, UITableVi
             if snapshot.exists() {
                 let toEmail = snapshot.value
                 mailComposerVC.setToRecipients(["\(toEmail as! String)"])
-                mailComposerVC.setSubject("New EDM Pro Purchase Order")
+                //mailComposerVC.setSubject("New EDM Pro Purchase Order")
                 
             } else {
                 self.showMailError()
@@ -388,9 +420,16 @@ class NewOrderViewController: UIViewController, UITableViewDataSource, UITableVi
         
         var res = ""
         
+//        for item in shoppingItems {
+//            res = "\(res)\(item.name) - \("£\(String(format: "%.2f", item.price))")\n\(item.info) x \(item.quantity)\n\n"
+//        }
+        
         for item in shoppingItems {
-            res = "\(res)\(item.name) - \("£\(String(format: "%.2f", item.price))")\n\(item.info) - \(item.quantity)\n\n"
+            res = "\(res)\(item.quantity) x \(item.name) - \("£\(String(format: "%.2f", item.price))")\nDescription: \(item.info)\n\n"
         }
+    
+        
+        
         
         return res
     }

@@ -9,11 +9,14 @@
 import UIKit
 import SwipeCellKit
 
-class PurchaseOrdersViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, SwipeTableViewCellDelegate {
+class PurchaseOrdersViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, SwipeTableViewCellDelegate, UISearchResultsUpdating {
     
     @IBOutlet var tableView: UITableView!
     
+    let searchController = UISearchController(searchResultsController: nil)
+    
     var allLists:[ShoppingList] = []
+    var filteredAllLists:[ShoppingList] = []
     
     var isSwipeRightEnabled = false
     var defaultOptions = SwipeTableOptions()
@@ -25,11 +28,22 @@ class PurchaseOrdersViewController: UIViewController, UITableViewDataSource, UIT
         loadLists()
         self.navigationItem.backBarButtonItem = nil
         self.navigationItem.hidesBackButton = true
+        
+        searchController.searchResultsUpdater = self
+        searchController.dimsBackgroundDuringPresentation = false
+        definesPresentationContext = true
+        
+        tableView.tableHeaderView = searchController.searchBar
     }
     
     //MARK: TableView Data Source
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        if searchController.isActive && searchController.searchBar.text != "" {
+            
+            return filteredAllLists.count
+        }
         
         return allLists.count
     }
@@ -37,9 +51,18 @@ class PurchaseOrdersViewController: UIViewController, UITableViewDataSource, UIT
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! ListTableViewCell
-        let shoppingList = allLists[indexPath.row]
         
-        cell.bindData(item: shoppingList)
+        let list: ShoppingList
+        
+        if searchController.isActive && searchController.searchBar.text != "" {
+            list = filteredAllLists[indexPath.row]
+        } else {
+            list = allLists[indexPath.row]
+        }
+        
+        
+        
+        cell.bindData(item: list)
         cell.delegate = self
         return cell
     }
@@ -57,11 +80,12 @@ class PurchaseOrdersViewController: UIViewController, UITableViewDataSource, UIT
     
     @IBAction func addBarButtonItemPressed(_ sender: Any) {
         
-        let alertController = UIAlertController(title: "Please enter your purchase order reference", message: "eg. 'Robs Order' or '12345'", preferredStyle: .alert)
+        let alertController = UIAlertController(title: "Please enter your purchase order reference", message: "eg. 'Stock' or 'PO-12345'", preferredStyle: .alert)
         
         alertController.addTextField { (nameTextField) in
             
             nameTextField.placeholder = "Purchase Order Reference"
+            nameTextField.autocapitalizationType = UITextAutocapitalizationType.words
             self.nameTextField = nameTextField
         }
         
@@ -159,12 +183,21 @@ class PurchaseOrdersViewController: UIViewController, UITableViewDataSource, UIT
             
             var list: ShoppingList
             
-            if self.allLists.count > 0 {
-                list = self.allLists[indexPath.row]
-                self.allLists.remove(at: indexPath.row)
+            if self.searchController.isActive && self.searchController.searchBar.text != "" {
+                list = self.filteredAllLists[indexPath.row]
+                self.filteredAllLists.remove(at: indexPath.row)
             } else {
                 list = self.allLists[indexPath.row]
+                self.allLists.remove(at: indexPath.row)
             }
+            
+            
+//            if self.allLists.count > 0 {
+//                list = self.allLists[indexPath.row]
+//                self.allLists.remove(at: indexPath.row)
+//            } else {
+//                list = self.allLists[indexPath.row]
+//            }
             
             list.deleteItemInBackground(shoppingList: list)
             
@@ -191,6 +224,21 @@ class PurchaseOrdersViewController: UIViewController, UITableViewDataSource, UIT
         options.buttonSpacing = 11
         return options
         
+    }
+    
+    //MARK: SEARCH CONTROLLER
+    
+    func filterContentForSearchText(searchText: String, Scope: String = "All") {
+        
+        filteredAllLists = allLists.filter({ (item) -> Bool in
+            return item.name.lowercased().contains(searchText.lowercased())
+        })
+        tableView.reloadData()
+    }
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        filterContentForSearchText(searchText: searchController.searchBar.text!)
+
     }
     
 }

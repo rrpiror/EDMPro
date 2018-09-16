@@ -61,6 +61,7 @@ class FUser {
             
             if error != nil {
                 completion(error)
+                
                 return
             }
             
@@ -171,3 +172,7 @@ func cleanUpFirebaseObservers() {
     firebase.child(kSHOPPINGITEM).removeAllObservers()
     firebase.child(kPRODUCTITEM).removeAllObservers()
 }
+
+
+
+

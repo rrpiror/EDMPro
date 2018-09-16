@@ -34,10 +34,10 @@ class ListTableViewCell: SwipeTableViewCell {
         
         
         self.nameLabel.text = item.name
-        self.totalItemsLabel.text = "\(item.totalItems) Items"
+       
         self.totalPriceLabel.text = "Total Price £\(String(format: "%.2f", item.totalPrice))"
         self.dateLabel.text = date
-        
+        self.totalItemsLabel.text = "\(item.totalItems) Items"
         self.totalPriceLabel.sizeToFit()
         self.nameLabel.sizeToFit()
         
