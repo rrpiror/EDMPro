@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "PurchaseViewController.paymentQueue(_:updatedTransactions:):PurchaseViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "trans.transactionState">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "PurchaseViewController.purchaseButtonSelected(_:):PurchaseViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "SKPaymentQueue.default()">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "PurchaseViewController.closeHandler(_:):PurchaseViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "PurchaseViewController.closeButtonSelected(_:):PurchaseViewController.swift">
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>
